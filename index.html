@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <title>C. Jace Jaison - Portfolio</title>
+    <style>
+       
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --text-primary: #333333;
+            --text-secondary: #666666;
+            --accent-color: #60a5fa;
+            --card-bg: #ffffff;
+            --about-me-bg: #60a5fa;
+            --card-border: rgba(0, 0, 0, 0.1);
+            --navbar-bg: rgba(255, 255, 255, 0.95);
+            --hero-gradient-start: #f8fafc;
+            --hero-gradient-end: #eff6ff;
+        }
+
+     
+        .dark {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2d2d2d;
+            --text-primary: #ffffff;
+            --text-secondary: #a3a3a3;
+            --accent-color: #60a5fa;
+            --card-bg: #2d2d2d;
+            --about-me-bg: #60a5fa;
+            --card-border: rgba(255, 255, 255, 0.1);
+            --navbar-bg: rgba(26, 26, 26, 0.95);
+            --hero-gradient-start: #1a1a1a;
+            --hero-gradient-end: #2d2d2d;
+        }
+
+       
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #ef233c;
+        }
+
+        
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .theme-toggle:hover {
+            color: var(--accent-color);
+        }
+
+     
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            /* background-color: #ef233c;*/
+        } 
+
+      
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--navbar-bg);
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px var(--card-border);
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+       
+        .hero {
+            padding: 8rem 0 4rem;
+            
+            background-color: #ef233c;
+        }
+
+        .hero .container {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .hero-img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--card-bg);
+            box-shadow: 0 4px 6px var(--card-border);
+            flex-shrink: 0;
+        }
+
+        .hero-content {
+            text-align: left;
+
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #1a1a1a;
+            max-width: 600px;
+        }
+
+     
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+        }
+
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .about-card {
+            background: var(--about-me-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px var(--card-border);
+        }
+
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--about-me-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px var(--card-border);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        .certificate-title{
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+       
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .skill-item {
+            padding: 1rem;
+            background: #60a5fa;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px var(--card-border);
+            color: var(--text-primary);
+        }
+
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px var(--card-border);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--card-border);
+            border-radius: 4px;
+            font-size: 1rem;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            background: var(--accent-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            opacity: 0.9;
+        }
+
+       
+        footer {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+        .container {
+        max-width: 1200px;
+        margin: auto;
+        
+        text-align: center;
+        
+    }
+    .container h2{
+        padding-bottom: 20px;
+    }
+
+
+    .certificates {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        padding-bottom: 20px;
+    }
+
+    .certificates img {
+        width: 100%;
+        max-width: 250px; 
+        height: auto;
+        border-radius: 10px; /* Optional: Rounded corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Shadow for better look */
+    }
+
+    @media (max-width: 768px) {
+        .certificates img {
+            max-width: 200px; /* Reduce size on smaller screens */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .certificates {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .certificates img {
+            max-width: 90%; /* Use most of the screen width on small devices */
+        }
+    }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero .container {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+                
+            }
+
+            .hero-img {
+                width: 200px;
+                height: 200px;
+            }
+
+            .hero-content {
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+        }
+        .photo {
+    height: 400px;
+    width: 100%;
+    
+    background: url("Smart helmet.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.ph{
+    height: 400px;
+    width: 100%;
+    
+    background: url("image screenshot.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.skill-item{
+    display: flex;
+    justify-content:center
+  
+}
+
+
+    </style>
+</head>
+<body>
+   
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="#" class="logo">Portfolio</a>
+            <div class="nav-right">
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#contact">Contact</a>
+           
+        </div>
+    </nav>
+
+    
+    <section class="hero">
+        <div class="container">
+            <img src="Jace.jpeg" alt="C. Jace Jaison" class="hero-img">
+            <div class="hero-content">
+                <h1>Hi, I'm C. Jace Jaison</h1>
+                <p>A computer engineering student passionate about technology and innovation.With a strong focus on innovation and efficiency, I’m always looking for new challenges to tackle and opportunities to grow in the ever-evolving world of technology.I take pride in creating impactful and efficient systems. With a keen eye for detail and a drive for continuous improvement, I’m always ready to embrace new challenges and push the boundaries of what’s possible in the tech world.</p>
+            </div>
+        </div>
+    </section>
+
+   
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3>Education</h3>
+                    <p>B.Tech in Computer Engineering<br>Fr. Conceicao Rodrigues College of Engineering</p>
+                </div>
+                <div class="about-card">
+                    <h3>Focus Areas</h3>
+                    <p>Software Development<br>Computer Engineering<br>Problem Solving</p>
+                </div>
+                <div class="about-card">
+                    <h3>Interests</h3>
+                    <p>Technology Innovation<br>Engineering Solutions<br>Project Development</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="photo">
+                     
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Smart Helmet Design</h3>
+                        <p>Innovative helmet design incorporating smart features for enhanced safety and functionality.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="ph">
+                     
+                    </div>
+                    <div class="project-content">
+                        
+                        <h3 class="project-title">Website Design</h3>
+                        <p>Creating responsive and user-friendly web interfaces with modern design principles.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                
+                <div class="skill-item">HTML</div> 
+                <div class="skill-item">CSS</div>
+                <div class="skill-item">Python</div>
+                <div class="skill-item">Git</div>
+                <div class="skill-item">C++</div>
+                <div class="skill-item">Figma</div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <h2 class="section-title">Certificates</h2>
+            <div class="certificates">
+                <img src="C1 .png" alt="">
+                <img src="C2.png" alt="">
+                <img src="C3.png" alt="">
+                <img src="C4.png" alt="">
+            </div>
+        </div>
+    </section>
+   
+    
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://github.com/Jace-4?tab=repositories" target="_blank">GitHub</a>
+                <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+                
+            </div>
+        </div>
+    </footer>
+
+    
+</body>
+</html>
